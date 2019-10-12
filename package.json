@@ -1,0 +1,28 @@
+{
+  "name": "buildgulp",
+  "version": "1.0.0",
+  "description": "This is a packaging tool using gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/usernameisregistered/buildGulp.git"
+  },
+  "keywords": [
+    "build",
+    "gulp",
+    "node",
+    "javascript"
+  ],
+  "author": "usernameisregistered",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/usernameisregistered/buildGulp/issues"
+  },
+  "homepage": "https://github.com/usernameisregistered/buildGulp#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
