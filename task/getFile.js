@@ -13,22 +13,22 @@ const taskName = "获取源文件";
 async function getResourceFile() {
     let { rmout, rmerr } = await exec(`rm -rf ${path.join(__dirname,"jsLib")}`)
     if (rmerr) {
-        console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.red("删除文件夹"+path.join(__dirname,'jsLib')+"失败")}`)
+        console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.red("删除文件夹"+path.join(__dirname,'jsLib')+"失败")}`)
     } else {
-        console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.cyan("成功删除文件夹:")}${chalk.cyan(path.join(__dirname,'jsLib'))}`)
+        console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("成功删除文件夹:")}${chalk.cyan(path.join(__dirname,'jsLib'))}`)
     }
     let startTime = Date.now()
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.cyan("切换目录到task")}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("切换目录到task")}`)
     process.chdir(__dirname)
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.cyan("开始从远程获取文件")}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("开始从远程获取文件")}`)
     let { gitout, giterr } = await exec(`git clone git@github.com:usernameisregistered/jsLib.git`)
     if (giterr) {
-        console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.magenta("文件获取失败 失败原因：")}${chalk.red(giterr)}`)
+        console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.magenta("文件获取失败 失败原因：")}${chalk.red(giterr)}`)
     } else {
-        console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.cyan("文件获取成功 用时：")}${chalk.red((Date.now() - startTime) / 1000)}秒`)
+        console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("文件获取成功 用时：")}${chalk.red((Date.now() - startTime) / 1000)}秒`)
     }
     process.chdir(path.join(__dirname,"../"))
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.cyan("切换目录到../")}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("切换目录到../")}`)
 }
 /**
  * 创建文件夹
@@ -38,16 +38,16 @@ async function createDIr() {
     if(fs.statSync(path.join(__dirname, "../src")).isDirectory()){
         let { rmout, rmerr } = await exec(`rm -rf ${path.join(__dirname,"../src")}`)
         if (rmerr) {
-            console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.red("删除文件夹"+path.join(__dirname,'../src')+"失败")}`)
+            console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.red("删除文件夹"+path.join(__dirname,'../src')+"失败")}`)
         } else {
-            console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.cyan("成功删除文件夹")}${chalk.cyan(path.join(__dirname,'../src'))}`)
+            console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("成功删除文件夹")}${chalk.cyan(path.join(__dirname,'../src'))}`)
         }
     }
     let { mkdirout, mkdirerr } = await exec(`mkdir ${path.join(__dirname, "../src")}`)
     if (mkdirout) {
-        console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.magenta("创建文件夹src失败 原因:")} ${chalk.red(mkdirout)}`)
+        console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.magenta("创建文件夹src失败 原因:")} ${chalk.red(mkdirout)}`)
     } else {
-        console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.cyan("成功创建文件夹src")}`)
+        console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("成功创建文件夹src")}`)
     }
 }
 /**
@@ -73,25 +73,25 @@ async function removeFile(rootDir = path.join(__dirname,"jsLib")){
  * @method moveFile
  */
 async function moveFile(){
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.cyan("开始移动文件")}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("开始移动文件")}`)
     let { mkdirout, mkdirerr } = await exec(`move ${path.join(__dirname,"jsLib")} ${path.join(__dirname,"../src")}`)
     if (mkdirout) {
-        console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.magenta("移动文件失败")} 原因${chalk.red(mkdirout)}`)
+        console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.magenta("移动文件失败")} 原因${chalk.red(mkdirout)}`)
     } else {
-        console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.cyan("成功移动文件")}`)
+        console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("成功移动文件")}`)
     }
 }
   
 module.exports = async function getFile(){
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.green('开始任务 任务名称：')} ${chalk.yellow(taskName)}`)
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.green('第一步')} ${chalk.blue('获取远程目录')}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.green('开始任务 任务名称：')} ${chalk.yellow(taskName)}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.green('第一步')} ${chalk.blue('获取远程目录')}`)
     await getResourceFile()
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.green('第二步')} ${chalk.blue('创建必要文件夹')}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.green('第二步')} ${chalk.blue('创建必要文件夹')}`)
     await createDIr()
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.green('第三步')} ${chalk.blue('删除不必要的文件')}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.green('第三步')} ${chalk.blue('删除不必要的文件')}`)
     await removeFile()
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.green('第四步')} ${chalk.blue('移动文件到指定目录')}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.green('第四步')} ${chalk.blue('移动文件到指定目录')}`)
     await moveFile()
-    console.log(`[${chalk.gray(moment().format("hh:mm:ss"))}] ${chalk.green('完成任务 任务名称: ')} ${chalk.yellow(taskName)}`)
+    console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.green('完成任务 任务名称: ')} ${chalk.yellow(taskName)}`)
 }
 

@@ -6,5 +6,7 @@
 
 > getFile 获取源文件从git
 
+> compile 编译源文件为es2015
+
 
 
