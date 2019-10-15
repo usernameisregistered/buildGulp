@@ -35,14 +35,16 @@ async function getResourceFile() {
  * @method createDIr
  */
 async function createDIr() {
-    if(fs.statSync(path.join(__dirname, "../src")).isDirectory()){
-        let { rmout, rmerr } = await exec(`rm -rf ${path.join(__dirname,"../src")}`)
-        if (rmerr) {
-            console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.red("删除文件夹"+path.join(__dirname,'../src')+"失败")}`)
-        } else {
-            console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("成功删除文件夹")}${chalk.cyan(path.join(__dirname,'../src'))}`)
+    try{
+        if(fs.statSync(path.join(__dirname, "../src")).isDirectory()){
+            let { rmout, rmerr } = await exec(`rm -rf ${path.join(__dirname,"../src")}`)
+            if (rmerr) {
+                console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.red("删除文件夹"+path.join(__dirname,'../src')+"失败")}`)
+            } else {
+                console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.cyan("成功删除文件夹")}${chalk.cyan(path.join(__dirname,'../src'))}`)
+            }
         }
-    }
+    }catch(e){}
     let { mkdirout, mkdirerr } = await exec(`mkdir ${path.join(__dirname, "../src")}`)
     if (mkdirout) {
         console.log(`[${chalk.gray(moment().format("HH:mm:ss"))}] ${chalk.magenta("创建文件夹src失败 原因:")} ${chalk.red(mkdirout)}`)
